@@ -123,9 +123,7 @@ function renderGroups(gender) {
             <div class="g-name">${escapeHtml(g.name)}</div>
             <div class="g-meta">${escapeHtml(g.days)} &middot; ${escapeHtml(g.time)}</div>
           </div>
-          <div class="group-seats ${isFull ? 'full' : ''}">
-            ${isFull ? 'المجموعة مكتملة' : `متبقي ${seatsLeft} مقعد`}
-          </div>
+         
         </div>
       </label>`;
   }).join('')}</div>`;
