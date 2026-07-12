@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل حجز  - الأستاذ ياسر الشرع</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="reg-card">
+
+    <div class="reg-header">
+      <div class="reg-logo">مستر ياسر الشرع</div>
+      <h1>حجز مجموعه مع مستر ياسر الشرع</h1>
+      <p>سجّل بياناتك واختر المجموعة المناسبة لك في أقل من دقيقتين</p>
+    </div>
+
+    <div class="steps">
+      <div class="step-dot active" id="dot-1"></div>
+      <div class="step-dot" id="dot-2"></div>
+      <div class="step-dot" id="dot-3"></div>
+    </div>
+
+    <div class="reg-body">
+      <div class="form-msg" id="globalMsg"></div>
+
+      <form id="regForm" novalidate>
+
+        <!-- الخطوة 1: البيانات الشخصية -->
+        <div class="step-panel active" id="panel-1">
+          <h2 class="step-title">بياناتك الشخصية</h2>
+          <p class="step-sub">من فضلك أدخل بياناتك بشكل صحيح لسهولة التواصل معك</p>
+
+          <div class="field" id="fieldFullName">
+            <label class="field-label">الاسم بالكامل</label>
+            <input class="input" type="text" id="fullName" placeholder="مثال: أحمد محمد علي">
+            <div class="field-error">من فضلك أدخل الاسم بالكامل</div>
+          </div>
+
+          <div class="field" id="fieldPhone">
+            <label class="field-label">رقم هاتفك</label>
+            <input class="input" type="tel" id="phone" placeholder="01xxxxxxxxx">
+            <div class="field-error">من فضلك أدخل رقم هاتف صحيح</div>
+          </div>
+
+          <div class="field" id="fieldParentPhone">
+            <label class="field-label">رقم هاتف ولي الأمر</label>
+            <input class="input" type="tel" id="parentPhone" placeholder="01xxxxxxxxx">
+            <div class="field-error">من فضلك أدخل رقم هاتف ولي الأمر</div>
+          </div>
+
+          <div class="field" id="fieldEmail">
+            <label class="field-label">البريد الإلكتروني</label>
+            <input class="input" type="email" id="email" placeholder="example@email.com">
+            <div class="field-error" id="emailError">من فضلك أدخل بريد إلكتروني صحيح</div>
+          </div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-primary" id="toStep2Btn">التالي</button>
+          </div>
+        </div>
+
+        <!-- الخطوة 2: النوع -->
+        <div class="step-panel" id="panel-2">
+          <h2 class="step-title">حدد نوعك</h2>
+          <p class="step-sub">سيتم عرض المجموعات المتاحة بناءً على اختيارك</p>
+
+          <div class="gender-grid">
+            <label class="gender-option">
+              <input type="radio" name="gender" value="Male" id="genderMale">
+              <div class="gender-card">
+                <span class="emoji">👦</span>
+                <span class="label">ذكر</span>
+              </div>
+            </label>
+            <label class="gender-option">
+              <input type="radio" name="gender" value="Female" id="genderFemale">
+              <div class="gender-card">
+                <span class="emoji">👧</span>
+                <span class="label">أنثى</span>
+              </div>
+            </label>
+          </div>
+          <div class="field-error" id="genderError">من فضلك اختر النوع</div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline" id="backToStep1Btn">السابق</button>
+            <button type="button" class="btn btn-primary" id="toStep3Btn">التالي</button>
+          </div>
+        </div>
+
+        <!-- الخطوة 3: اختيار المجموعة -->
+        <div class="step-panel" id="panel-3">
+          <h2 class="step-title">اختر المجموعة المناسبة</h2>
+          <p class="step-sub">هذه هي المجموعات المتاحة حاليًا حسب النوع الذي اخترته</p>
+
+          <div id="groupsContainer">
+            <div class="empty-state">جارِ تحميل المجموعات المتاحة...</div>
+          </div>
+          <div class="field-error" id="groupError">من فضلك اختر مجموعة متاحة</div>
+
+          <div class="step-actions">
+            <button type="button" class="btn btn-outline" id="backToStep2Btn">السابق</button>
+            <button type="submit" class="btn btn-gold" id="submitBtn">تأكيد الحجز</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="js/register.js"></script>
+</body>
+</html>
