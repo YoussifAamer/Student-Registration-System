@@ -1,0 +1,199 @@
+/* =========================================================
+   تسجيل الطلاب - نظام حجز الحصص - الأستاذ ياسر الشرع
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@400;500;700&display=swap');
+
+:root{
+  --navy:        #16233F;
+  --navy-light:  #24365C;
+  --navy-pale:   #EEF1F7;
+  --gold:        #E0A526;
+  --gold-dark:   #B9860F;
+  --teal:        #2E8B8B;
+  --bg:          #F6F4EF;
+  --surface:     #FFFFFF;
+  --text:        #1F2430;
+  --text-muted:  #6C7488;
+  --border:      #E4E1D8;
+  --danger:      #C0392B;
+  --danger-bg:   #FCEBEA;
+  --success:     #2E8B57;
+  --success-bg:  #E9F6EF;
+  --radius-sm:   8px;
+  --radius:      14px;
+  --radius-lg:   22px;
+  --shadow:      0 2px 10px rgba(22,35,63,.08);
+  --shadow-lg:   0 16px 40px rgba(22,35,63,.18);
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  font-family:'Tajawal', sans-serif;
+  color:var(--text);
+  direction:rtl;
+  min-height:100vh;
+  background:
+    radial-gradient(1000px 520px at 90% -10%, rgba(224,165,38,.14), transparent 60%),
+    radial-gradient(900px 480px at -10% 110%, rgba(46,139,139,.14), transparent 60%),
+    var(--bg);
+}
+h1,h2,h3,.brand{ font-family:'Cairo', sans-serif; }
+button{ font-family:inherit; cursor:pointer; }
+input,select{ font-family:inherit; }
+
+.page-wrap{ min-height:100vh; display:flex; align-items:flex-start; justify-content:center; padding:32px 16px; }
+
+.reg-card{
+  width:100%; max-width:560px; background:var(--surface);
+  border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);
+  overflow:hidden;
+}
+
+.reg-header{
+  
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color:#fff; padding:30px 32px 26px; position:relative;
+}
+.reg-header::after{
+  content:""; position:absolute; inset:auto 0 0 0; height:5px;
+  background:linear-gradient(90deg, var(--gold), var(--teal));
+}
+.reg-logo{
+   height:46px; border-radius:12px; background:var(--gold); color:var(--navy);
+  display:flex; align-items:center; justify-content:center; font-weight:800; font-size:20px; margin-bottom:14px;
+}
+.reg-header h1{ font-size:21px; margin:0 0 4px; }
+.reg-header p{ margin:0; font-size:13.5px; color:rgba(255,255,255,.75); }
+
+/* مؤشر الخطوات */
+.steps{ display:flex; gap:8px; padding:18px 32px 0; }
+.step-dot{ flex:1; height:5px; border-radius:999px; background:var(--navy-pale); transition:.2s background ease; }
+.step-dot.active{ background:var(--gold); }
+.step-dot.done{ background:var(--teal); }
+
+.reg-body{ padding:26px 32px 32px; }
+.step-panel{ display:none; }
+.step-panel.active{ display:block; animation:fadeIn .25s ease; }
+@keyframes fadeIn{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+
+.step-title{ font-size:17px; font-weight:800; color:var(--navy); margin:0 0 4px; }
+.step-sub{ font-size:13px; color:var(--text-muted); margin:0 0 20px; }
+
+.field{ margin-bottom:16px; }
+label.field-label{ display:block; font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:6px; }
+.input{
+  width:100%; padding:12px 14px; border-radius:var(--radius-sm);
+  border:1.5px solid var(--border); background:#fff; color:var(--text);
+  font-size:14.5px; outline:none; transition:.15s border-color ease;
+}
+.input:focus{ border-color:var(--navy); }
+.field-error{ color:var(--danger); font-size:12.5px; font-weight:700; margin-top:5px; display:none; }
+.field-error.show{ display:block; }
+.field.has-error .input{ border-color:var(--danger); }
+
+/* اختيار النوع */
+.gender-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:6px; }
+.gender-option{ position:relative; }
+.gender-option input{ position:absolute; opacity:0; inset:0; margin:0; cursor:pointer; }
+.gender-card{
+  border:2px solid var(--border); border-radius:var(--radius); padding:20px 12px;
+  text-align:center; transition:.15s all ease;
+}
+.gender-card .emoji{ font-size:30px; display:block; margin-bottom:8px; }
+.gender-card .label{ font-weight:800; color:var(--navy); font-size:14.5px; }
+.gender-option input:checked + .gender-card{ border-color:var(--gold); background:#FFF8E9; }
+.gender-option input:focus-visible + .gender-card{ outline:2px solid var(--teal); outline-offset:2px; }
+
+/* قائمة المجموعات */
+.groups-hint{
+  background:var(--navy-pale); color:var(--navy); font-size:13px; font-weight:700;
+  padding:12px 16px; border-radius:var(--radius-sm); margin-bottom:14px;
+}
+.group-list{ display:flex; flex-direction:column; gap:10px; }
+.group-option{ position:relative; }
+.group-option input{ position:absolute; opacity:0; inset:0; margin:0; cursor:pointer; }
+.group-option input:disabled{ cursor:not-allowed; }
+.group-card{
+  border:2px solid var(--border); border-radius:var(--radius); padding:14px 16px;
+  display:flex; align-items:center; gap:14px; transition:.15s all ease;
+}
+.group-option input:checked + .group-card{ border-color:var(--gold); background:#FFF8E9; }
+.group-option input:disabled + .group-card{ opacity:.5; background:#F5F5F2; }
+.group-icon{
+  width:38px; height:38px; border-radius:10px; background:var(--navy); color:var(--gold);
+  display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0;
+}
+.group-info{ flex:1; min-width:0; }
+.group-info .g-name{ font-weight:800; color:var(--navy); font-size:14.5px; }
+.group-info .g-meta{ font-size:12.5px; color:var(--text-muted); margin-top:2px; }
+.group-seats{ font-size:12px; font-weight:700; color:var(--teal); white-space:nowrap; }
+.group-seats.full{ color:var(--danger); }
+
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:13px 22px; border-radius:var(--radius-sm); border:none;
+  font-size:15px; font-weight:800; width:100%; transition:.15s transform ease, .15s background ease;
+}
+.btn:active{ transform:scale(.98); }
+.btn-primary{ background:var(--navy); color:#fff; }
+.btn-primary:hover{ background:var(--navy-light); }
+.btn-gold{ background:var(--gold); color:var(--navy); }
+.btn-gold:hover{ background:var(--gold-dark); color:#fff; }
+.btn-outline{ background:transparent; border:1.5px solid var(--border); color:var(--text); }
+.btn:disabled{ opacity:.5; cursor:not-allowed; }
+
+.step-actions{ display:flex; gap:10px; margin-top:24px; }
+.step-actions .btn{ flex:1; }
+
+.form-msg{ font-size:13.5px; font-weight:700; padding:11px 14px; border-radius:var(--radius-sm); margin-bottom:16px; display:none; }
+.form-msg.show{ display:block; }
+.form-msg.success{ background:var(--success-bg); color:var(--success); }
+.form-msg.error{ background:var(--danger-bg); color:var(--danger); }
+
+.spinner{
+  width:16px; height:16px; border-radius:50%;
+  border:3px solid rgba(255,255,255,.35); border-top-color:#fff;
+  animation:spin .7s linear infinite; display:inline-block;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+.empty-state{ text-align:center; color:var(--text-muted); font-size:13.5px; padding:24px; }
+
+/* صفحة الشكر */
+.thanks-wrap{
+  min-height:100vh; 
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center; justify-content:center; text-align:center;
+  padding:24px; background:
+    radial-gradient(1100px 550px at 85% -10%, rgba(224,165,38,.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(46,139,139,.18), transparent 60%),
+    var(--navy);
+}
+.thanks-card{ max-width:520px; }
+.thanks-check{
+  width:84px; height:84px; border-radius:50%; background:var(--gold); color:var(--navy);
+  display:flex; align-items:center; justify-content:center; font-size:42px; margin:0 auto 26px;
+  box-shadow:var(--shadow-lg);
+}
+.thanks-title{ font-size:clamp(24px, 5vw, 34px); color:#fff; font-weight:800; margin:0 0 12px; line-height:1.4; }
+.thanks-sub{ color:rgba(255,255,255,.75); font-size:15px; margin:0; }
+
+/* ================= استجابة الشاشات ================= */
+@media (max-width:640px){
+  .page-wrap{ padding:0; }
+  .reg-card{ border-radius:0; min-height:100vh; box-shadow:none; }
+  .reg-header{ padding:24px 20px 22px; }
+  .reg-body{ padding:22px 20px 28px; }
+  .steps{ padding:16px 20px 0; }
+}
+
+@media (max-width:420px){
+  .gender-grid{ gap:10px; }
+  .gender-card{ padding:16px 8px; }
+  .group-card{ padding:12px; gap:10px; }
+  .group-icon{ width:32px; height:32px; font-size:15px; }
+}

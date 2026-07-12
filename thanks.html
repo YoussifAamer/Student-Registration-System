@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تم الحجز بنجاح - الأستاذ ياسر الشرع</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="thanks-wrap">
+  <div class="thanks-card">
+    <div class="thanks-check">✓</div>
+    <h1 class="thanks-title" id="thanksTitle">شكراً لتسجيلك مع الأستاذ ياسر الشرع</h1>
+    <p class="thanks-sub">تم استلام بياناتك بنجاح، وسيتم التواصل معك قريبًا لتأكيد موعد الحصة.</p>
+  </div>
+  <div class="whatsapp">
+    <a href="https://chat.whatsapp.com/GpISmWjy9Rb7nAnbec0WjC" target="_blank" rel="noopener noreferrer">
+  <button style="background-color:#25D366; color:white; padding:12px 24px; border:none; border-radius:8px; font-size:16px; cursor:pointer;">
+    انضم لجروب الواتساب
+  </button>
+</a>
+  </div>
+</div>
+
+<script>
+  const name = sessionStorage.getItem('studentName');
+  if (name) {
+    document.getElementById('thanksTitle').textContent = `شكراً لتسجيلك يا ${name} مع الأستاذ ياسر الشرع`;
+  }
+</script>
+</body>
+</html>
