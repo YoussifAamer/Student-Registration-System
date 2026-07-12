@@ -163,7 +163,15 @@ label.field-label{ display:block; font-size:13px; font-weight:700; color:var(--t
 
 /* صفحة الشكر */
 .thanks-wrap{
+<<<<<<< HEAD
+  min-height:100vh; 
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center; justify-content:center; text-align:center;
+=======
   min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;
+>>>>>>> 1cf3fcb4bc7a3676ffef583f4a99527e771567d8
   padding:24px; background:
     radial-gradient(1100px 550px at 85% -10%, rgba(224,165,38,.18), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(46,139,139,.18), transparent 60%),
