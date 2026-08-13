@@ -163,15 +163,12 @@ label.field-label{ display:block; font-size:13px; font-weight:700; color:var(--t
 
 /* صفحة الشكر */
 .thanks-wrap{
-<<<<<<< HEAD
   min-height:100vh; 
   display:flex;
   flex-direction:column;
   gap:16px;
   align-items:center; justify-content:center; text-align:center;
-=======
   min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;
->>>>>>> 1cf3fcb4bc7a3676ffef583f4a99527e771567d8
   padding:24px; background:
     radial-gradient(1100px 550px at 85% -10%, rgba(224,165,38,.18), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(46,139,139,.18), transparent 60%),
@@ -184,8 +181,23 @@ label.field-label{ display:block; font-size:13px; font-weight:700; color:var(--t
   box-shadow:var(--shadow-lg);
 }
 .thanks-title{ font-size:clamp(24px, 5vw, 34px); color:#fff; font-weight:800; margin:0 0 12px; line-height:1.4; }
-.thanks-sub{ color:rgba(255,255,255,.75); font-size:15px; margin:0; }
-
+.thanks-sub{ color:rgba(255,255,255,.75); font-size:18px;
+   margin:0;
+  font-weight: 700; }
+.link-whats{
+  width: 25%;
+  background-color: rgb(16, 149, 36);
+  color: white;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px white;
+}
+.link-whats a{
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  text-decoration: none;
+}
 /* ================= استجابة الشاشات ================= */
 @media (max-width:640px){
   .page-wrap{ padding:0; }
